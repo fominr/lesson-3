@@ -37,6 +37,36 @@ struct TrunkCar {
     var engineStart: EngineStatus
     var windowOpen: WindowSatus
     var bagage: BagageStatus
+    
+    // включить- выключить двигатель
+    mutating func engine (engineStart: EngineStatus ) {
+        self.engineStart = engineStart
+    }
+    
+    // загрузить или выгрузить  количество кг в авто
+    mutating func operationBagage (operation: BagageStatus, cargoBagage: Int ) {
+      
+        switch operation {
+        case .load: do {
+            if (cargoBagage + self.bagageWeight) > self.bagageMax {
+                print("Операция отменена. Нельзя \(cargoBagage) кг загрузить в авто, будет перегруз.")
+            } else {
+                self.bagageWeight = self.bagageWeight + cargoBagage
+                self.cargo = cargoBagage
+                print("В автомобиль загрузили \(cargoBagage) кг")
+            }
+        }
+        case .unload: do {
+            if (self.bagageWeight) < cargoBagage {
+                print("нельзя \(cargoBagage) кг выгрузить из авто")
+            } else {
+                self.bagageWeight = self.bagageWeight - cargoBagage
+                self.cargo = cargoBagage
+                print("Из автомобиля выгрузили \(cargoBagage) кг")
+            }
+        }
+        }
+    }
 }
 
 struct  sportCar{
@@ -49,3 +79,6 @@ struct  sportCar{
         var engine: EngineStatus
         var transmission: TransmissionStatus
 }
+
+//3. Описать перечисление с возможными действиями с автомобилем: запустить/заглушить двигатель, открыть/закрыть окна, погрузить/выгрузить из кузова/багажника груз определенного объема.
+
