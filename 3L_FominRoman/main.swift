@@ -96,3 +96,17 @@ struct  sportCar{
 
 //3. Описать перечисление с возможными действиями с автомобилем: запустить/заглушить двигатель, открыть/закрыть окна, погрузить/выгрузить из кузова/багажника груз определенного объема.
 
+
+// операции с грузовым автомобилем
+
+var car1 = TrunkCar(brand: "Kamaz", power: 300, year: 2019, bagageMax: 25_000, bagageWeight: 15_000, cargo: 5_000, engineStart: .stop, windowOpen: .close, bagage: .unload)
+    
+print(car1)
+car1.bagage = .unload
+car1.windowOpen = .open
+car1.engine(engineStart: .start)
+car1.operationBagage(operation: .unload, cargoBagage: 12_000)
+car1.operationBagage(operation: .load, cargoBagage: 25_000)
+print(car1)
+
+
