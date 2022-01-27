@@ -78,6 +78,20 @@ struct  sportCar{
         let window: WindowSatus
         var engine: EngineStatus
         var transmission: TransmissionStatus
+    
+    mutating func autoStart (transmission: TransmissionStatus){
+        
+        if transmission == .drive {
+            print ("Автозапуск двигателя невозможен, трансмиссия находится в режиме драйв. Установите в положение 'нейтраль' или Parking")
+            
+        } else {
+            self.transmission = transmission
+            self.engine = .start
+            print("Автозапуск двигателя произведен")
+        }
+        
+    }
+    
 }
 
 //3. Описать перечисление с возможными действиями с автомобилем: запустить/заглушить двигатель, открыть/закрыть окна, погрузить/выгрузить из кузова/багажника груз определенного объема.
